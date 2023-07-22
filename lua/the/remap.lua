@@ -7,7 +7,7 @@ vim.keymap.set({"n", "v"}, "<C-l>", "$")
 -- buffer next, prev, delete, save
 vim.keymap.set("n", "<leader>l", ":bn<CR>")
 vim.keymap.set("n", "<leader>h", ":bp<CR>")
-vim.keymap.set("n", "<leader>qq", ":bd<CR>")
+vim.keymap.set("n", "<leader>q", ":bd<CR>")
 vim.keymap.set("n", "<leader>w", ":w<CR>")
 
 -- select current word to replace
@@ -43,11 +43,12 @@ vim.keymap.set("n", "N", "Nzzzv")
 
 -- idk
 vim.keymap.set("n", "<leader>cd", ":cd ~/.config/nvim/<CR>")
+vim.keymap.set("n", "<leader>cv", ":Ex ~/.config/nvim/lua/the/<CR>")
 vim.keymap.set("n", "<leader>x", "<cmd>!chmod u+x %<CR>", { silent = true })
 vim.keymap.set("n", "J", "mzJ`z")
 vim.keymap.set("n", "Q", "<nop>")
-vim.keymap.set("n", "<leader>f", vim.lsp.buf.format)
 vim.keymap.set("n", "<leader>pv", vim.cmd.Ex)
+vim.keymap.set("n", "<leader>f", vim.lsp.buf.format)
 
 --  go to the [count] next/prev error.
 vim.keymap.set("n", "<C-k>", "<cmd>cnext<CR>zz")
