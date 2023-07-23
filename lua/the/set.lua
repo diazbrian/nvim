@@ -3,7 +3,6 @@ vim.opt.number = true
 vim.opt.cursorline = true
 vim.opt.cursorlineopt = "number,line"
 vim.opt.scrolloff = 8
-vim.opt.hlsearch = false
 vim.opt.ignorecase = true
 vim.opt.smartcase = true
 
@@ -53,8 +52,10 @@ autocmd('TextYankPost', {
 vim.cmd('highlight CursorLineNr gui=bold guifg=#fff')
 vim.cmd('highlight CursorLine gui=underline guibg=none')
 
--- augroup vimrc-incsearch-highlight
--- autocmd!
--- autocmd CmdlineEnter /,\? :set hlsearch
--- autocmd CmdlineLeave /,\? :set nohlsearch
--- augroup END
+-- Убирает подсветку после поиска после ухода со строки (auto highlight on search)
+vim.on_key(function(char)
+  if vim.fn.mode() == "n" then
+    local new_hlsearch = vim.tbl_contains({ "<CR>", "n", "N", "*", "#", "?", "/" }, vim.fn.keytrans(char))
+    if vim.opt.hlsearch:get() ~= new_hlsearch then vim.opt.hlsearch = new_hlsearch end
+  end
+end, vim.api.nvim_create_namespace "auto_hlsearch")

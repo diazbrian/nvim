@@ -4,7 +4,7 @@ vim.g.mapleader = " "
 vim.keymap.set({"n", "v"}, "<C-h>", "_")
 vim.keymap.set({"n", "v"}, "<C-l>", "$")
 
--- buffer next, prev, delete, save
+-- buffer next; prev; delete; save
 vim.keymap.set("n", "<leader>l", ":bn<CR>")
 vim.keymap.set("n", "<leader>h", ":bp<CR>")
 vim.keymap.set("n", "<leader>q", ":bd<CR>")
@@ -38,8 +38,6 @@ vim.keymap.set("i", "<C-c>", "<Esc>l")
 -- center cursor when move
 vim.keymap.set("n", "<C-d>", "<C-d>zz")
 vim.keymap.set("n", "<C-u>", "<C-u>zz")
-vim.keymap.set("n", "n", "nzzzv")
-vim.keymap.set("n", "N", "Nzzzv")
 
 -- idk
 vim.keymap.set("n", "<leader>cd", ":cd ~/.config/nvim/<CR>")
