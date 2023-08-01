@@ -4,9 +4,20 @@ vim.g.mapleader = " "
 vim.keymap.set({"n", "v"}, "<C-h>", "_")
 vim.keymap.set({"n", "v"}, "<C-l>", "$")
 
+
+-- Some emacs keybiding in insert mode
+vim.keymap.set("i", "<C-b>", "<Left>")
+vim.keymap.set("i", "<C-f>", "<Right>")
+vim.keymap.set("i", "<C-a>", "<Home>")
+vim.keymap.set("i", "<C-e>", "<End>")
+vim.keymap.set("i", "<A-b>", "<C-Left>")
+vim.keymap.set("i", "<A-f>", "<C-Right>")
+vim.keymap.set("i", "<C-d>", "<Del>")
+vim.keymap.set("i", "<A-d>", "<Esc>ldwi")
+
 -- buffer next; prev; delete; save
-vim.keymap.set("n", "<leader>l", ":bn<CR>")
-vim.keymap.set("n", "<leader>h", ":bp<CR>")
+vim.keymap.set("n", "<C-n>", ":bn<CR>")
+vim.keymap.set("n", "<C-p>", ":bp<CR>")
 vim.keymap.set("n", "<leader>q", ":bd<CR>")
 vim.keymap.set("n", "<leader>w", ":w<CR>")
 

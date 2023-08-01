@@ -51,13 +51,13 @@ return require('packer').startup(function(use)
   -- Git
   use("tpope/vim-fugitive")
 
-  -- .
+  -- *
 
   -- Themes
 
   -- use 'folke/tokyonight.nvim'
 
-  -- use({ 'rose-pine/neovim', as = 'rose-pine' })
+  use({ 'rose-pine/neovim', as = 'rose-pine' })
 
   use 'navarasu/onedark.nvim' require('onedark').setup {
       style = 'darker', -- Choose between 'dark', 'darker', 'cool', 'deep', 'warm', 'warmer' and 'light'

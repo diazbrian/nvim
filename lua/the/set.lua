@@ -1,7 +1,7 @@
 vim.opt.number = true
--- vim.opt.relativenumber = true
+vim.opt.relativenumber = true
 vim.opt.cursorline = true
-vim.opt.cursorlineopt = "number,line"
+vim.opt.cursorlineopt = "number"
 vim.opt.scrolloff = 8
 vim.opt.ignorecase = true
 vim.opt.smartcase = true
@@ -27,11 +27,11 @@ vim.opt.clipboard = "unnamedplus"
 
 vim.opt.termguicolors = true
 vim.opt.signcolumn = "yes"
--- vim.opt.guicursor = ""
+vim.opt.guicursor = "i-c:blinkoff200-blinkon200,r-cr-o:hor30"
 -- vim.opt.colorcolumn = "80"
 -- vim.opt.mousemoveevent = true
 
--- .
+-- *
 
 -- highlight when yank something
 local augroup = vim.api.nvim_create_augroup
@@ -48,9 +48,11 @@ autocmd('TextYankPost', {
     end,
 })
 
--- set personal cursorline & number
+
+-- set custom cursorline & number
 vim.cmd('highlight CursorLineNr gui=bold guifg=#fff')
-vim.cmd('highlight CursorLine gui=underline guibg=none')
+-- vim.cmd('highlight CursorLine gui=underline guibg=none')
+
 
 -- Убирает подсветку после поиска после ухода со строки (auto highlight on search)
 vim.on_key(function(char)
