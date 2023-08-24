@@ -1,5 +1,12 @@
 require("nvim-tree").setup({
   renderer = {
+	  icons = {
+		  show = {
+            folder_arrow = false,
+            git = false,
+            modified = false,
+		  },
+	  },
       indent_markers = {
           enable = true,
       },

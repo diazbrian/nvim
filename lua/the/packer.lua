@@ -53,28 +53,18 @@ return require('packer').startup(function(use)
 
   -- *
 
-  -- Themes
-
-  -- use 'folke/tokyonight.nvim'
-
-  use({ 'rose-pine/neovim', as = 'rose-pine' })
+  -- Colorscheme
 
   use 'navarasu/onedark.nvim' require('onedark').setup {
-      style = 'darker', -- Choose between 'dark', 'darker', 'cool', 'deep', 'warm', 'warmer' and 'light'
+      style = 'warmer', -- Choose between 'dark', 'darker', 'cool', 'deep', 'warm', 'warmer' and 'light'
 	  code_style = { comments = 'none', },
 	  colors = { bg0 = '#1e1e1e', bg_d = '#1e1e1e', },
       highlights = {
           TelescopeBorder = { fg = 'white'}, -- title
-          TelescopeResultsBorder = { fg = 'grey'},
-          TelescopePreviewBorder = { fg = 'grey'},
-          TelescopePromptBorder = { fg = 'grey'},
       },
   }
 
-  -- Set themes
   require('onedark').load()
-  -- vim.cmd('colorscheme rose-pine')
-  -- vim.cmd('colorscheme tokyonight-night')
 
   -- Status bar, buffers, file explorer
 

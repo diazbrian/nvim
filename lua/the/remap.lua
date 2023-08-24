@@ -43,12 +43,7 @@ vim.keymap.set("n", "<S-Left>", ":vertical resize -3<CR>", { silent = true })
 vim.keymap.set("n", "<S-Right>", ":vertical resize +3<CR>", { silent = true })
 
 -- This is going to get me cancelled
-vim.keymap.set("i", "jj", "<Esc>l")
 vim.keymap.set("i", "<C-c>", "<Esc>l")
-
--- center cursor when move
-vim.keymap.set("n", "<C-d>", "<C-d>zz")
-vim.keymap.set("n", "<C-u>", "<C-u>zz")
 
 -- idk
 vim.keymap.set("n", "<leader>cd", ":cd ~/.config/nvim/<CR>")
@@ -58,11 +53,4 @@ vim.keymap.set("n", "J", "mzJ`z")
 vim.keymap.set("n", "Q", "<nop>")
 vim.keymap.set("n", "<leader>pv", vim.cmd.Ex)
 vim.keymap.set("n", "<leader>f", vim.lsp.buf.format)
-
---  go to the [count] next/prev error.
-vim.keymap.set("n", "<C-k>", "<cmd>cnext<CR>zz")
-vim.keymap.set("n", "<C-j>", "<cmd>cprev<CR>zz")
-
--- Same as ":cnext", except the location list for the current window is used instead of the quickfix list.
-vim.keymap.set("n", "<leader>k", "<cmd>lnext<CR>zz")
-vim.keymap.set("n", "<leader>j", "<cmd>lprev<CR>zz")
+vim.keymap.set('n', '<leader>dd', '<cmd>Telescope diagnostics<CR>', { noremap = true, silent = true })

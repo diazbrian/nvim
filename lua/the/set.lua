@@ -5,13 +5,26 @@ vim.opt.cursorlineopt = "number"
 vim.opt.scrolloff = 8
 vim.opt.ignorecase = true
 vim.opt.smartcase = true
+vim.opt.inccommand = "split"
 
--- vim.opt.expandtab = true
+-- vim.opt.expandtab = true -- Use the spaces to insert a <Tab>.  To insert a real tab use CTRL-V<Tab>
 vim.opt.tabstop = 4
 vim.opt.softtabstop = 4
 vim.opt.shiftwidth = 4
 vim.opt.smartindent = true
 vim.opt.wrap = false
+
+vim.opt.foldmethod = "expr"
+vim.opt.foldexpr = "nvim_treesitter#foldexpr()"
+vim.opt.foldlevel= 99
+vim.opt.foldnestmax = 1
+vim.opt.foldcolumn = "1"
+vim.opt.foldtext = [['+-- ' . substitute(getline(v:foldstart),'\\t',repeat('\ ',&tabstop),'g').'...'.trim(getline(v:foldend)) . ' (' . (v:foldend - v:foldstart + 1) . ' lines)']]
+vim.opt.fillchars = {
+  -- fold = " ",
+  foldclose = "󰅂",
+  foldopen = "󰅀"
+}
 
 vim.opt.list = true
 vim.opt.listchars = {
@@ -27,7 +40,7 @@ vim.opt.clipboard = "unnamedplus"
 
 vim.opt.termguicolors = true
 vim.opt.signcolumn = "yes"
-vim.opt.guicursor = "i-c:blinkoff200-blinkon200,r-cr-o:hor30"
+vim.opt.guicursor = "n-c-sm:blinkoff800-blinkon800,i-ci-ve:ver25,r-cr-o:hor30" -- n-v-c-sm:block,i-ci-ve:ver25,r-cr-o:hor20
 -- vim.opt.colorcolumn = "80"
 -- vim.opt.mousemoveevent = true
 

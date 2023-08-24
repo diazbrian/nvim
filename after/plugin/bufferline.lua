@@ -2,11 +2,8 @@ local bufferline = require('bufferline')
 bufferline.setup {
 	options = {
 		style_preset = bufferline.style_preset.no_italic,
-		-- show_buffer_icons = false, -- disable filetype icons for buffers
-		buffer_close_icon = '×',
-		indicator = {
-			style = 'none',
-		},
+        separator_style = "slant",
+        buffer_close_icon = '󰅖',
         offsets = {
             {
                 filetype = "NvimTree",
