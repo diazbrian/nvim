@@ -1,0 +1,81 @@
+-- This file can be loaded by calling `lua require('plugins')` from your init.vim
+
+-- Only required if you have packer configured as `opt`
+vim.cmd.packadd('packer.nvim')
+
+return require('packer').startup(function(use)
+  -- Packer can manage itself
+  use 'wbthomason/packer.nvim'
+
+  -- Telescope
+  use {
+    'nvim-telescope/telescope.nvim', tag = '0.1.1',
+    requires = { {'nvim-lua/plenary.nvim'} }
+  }
+
+  -- LSP
+  use {
+	  'VonHeikemen/lsp-zero.nvim',
+	  branch = 'v1.x',
+	  requires = {
+		  -- LSP Support
+		  {'neovim/nvim-lspconfig'},
+		  {'williamboman/mason.nvim'},
+		  {'williamboman/mason-lspconfig.nvim'},
+
+		  -- Autocompletion
+		  {'saadparwaiz1/cmp_luasnip'},
+		  {'hrsh7th/nvim-cmp'},
+		  {'hrsh7th/cmp-buffer'},
+		  {'hrsh7th/cmp-path'},
+		  {'hrsh7th/cmp-nvim-lsp'},
+		  {'hrsh7th/cmp-nvim-lua'},
+
+		  -- Snippets
+		  {'L3MON4D3/LuaSnip'},
+		  {'rafamadriz/friendly-snippets'},
+	  }
+  }
+
+  -- Code
+
+  use ('nvim-treesitter/nvim-treesitter', {run = ':TSUpdate'})
+
+  use { "windwp/nvim-autopairs", config = function() require("nvim-autopairs").setup {} end }
+
+  use { 'numToStr/Comment.nvim', config = function() require('Comment').setup() end } require('Comment').setup()
+
+  use 'NvChad/nvim-colorizer.lua'
+
+  -- Git
+
+  use("tpope/vim-fugitive")
+
+  -- Colorscheme
+
+  use ('navarasu/onedark.nvim')
+
+  use ('nyoom-engineering/oxocarbon.nvim')
+
+  use ('Mofiqul/vscode.nvim')
+
+  use ('maxmx03/dracula.nvim')
+
+  use ('rebelot/kanagawa.nvim')
+
+  -- use { 'daltonmenezes/aura-theme', rtp = 'packages/neovim' }
+
+  -- status, buffers, file explorer
+
+
+  use {'akinsho/bufferline.nvim', tag = "*", requires = 'nvim-tree/nvim-web-devicons'}
+
+  use { 'nvim-lualine/lualine.nvim', requires = { 'nvim-tree/nvim-web-devicons'} }
+
+  use { 'nvim-tree/nvim-tree.lua', requires = 'nvim-tree/nvim-web-devicons'}
+
+  use ("tiagovla/scope.nvim")
+
+  use("folke/zen-mode.nvim")
+
+end)
