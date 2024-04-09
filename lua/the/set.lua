@@ -46,11 +46,10 @@ vim.opt.listchars = {
 }
 
 vim.cmd('highlight CursorLineNr gui=bold guifg=#fff')
-vim.cmd('language en_US')
 vim.g.netrw_browse_split = 0
 vim.g.netrw_banner = 0
-vim.g.netrw_winsize = 25
-vim.g.netrw_cursor = 4
+-- vim.g.netrw_winsize = 25
+-- vim.g.netrw_cursor = 4
 
 -- highlight when yank something
 local augroup = vim.api.nvim_create_augroup
@@ -66,6 +65,11 @@ autocmd('TextYankPost', {
     })
   end,
 })
+
+-- Set language on Windows
+if vim.loop.os_uname().sysname == "Windows_NT" then
+  vim.cmd('language en_US')
+end
 
 -- Убирает подсветку после поиска после ухода со строки (auto highlight on search)
 -- vim.on_key(function(char)
