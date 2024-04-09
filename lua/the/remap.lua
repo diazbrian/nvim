@@ -24,8 +24,8 @@ vim.keymap.set("n", "<leader>w", ":w<CR>")
 vim.keymap.set("n", "<leader>s", [[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left>]])
 
 -- indent in visual mode
-vim.keymap.set("v", "<Tab>", ">gv")
-vim.keymap.set("v", "<S-Tab>", "<gv")
+vim.keymap.set("v", "<Tab>", ">gv<Esc>")
+vim.keymap.set("v", "<S-Tab>", "<gv<Esc>")
 
 -- S E X
 vim.keymap.set("v", "J", ":m '>+1<CR>gv=gv")
