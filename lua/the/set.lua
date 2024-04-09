@@ -113,15 +113,15 @@ vim.api.nvim_create_autocmd({ "BufWritePre" }, {
   end,
 })
 
-    group = yank_group,
-    pattern = '*',
-    callback = function()
-        vim.highlight.on_yank({
-            higroup = 'IncSearch',
-            timeout = 120,
-        })
-    end,
-})
+--     group = yank_group,
+--     pattern = '*',
+--     callback = function()
+--         vim.highlight.on_yank({
+--             higroup = 'IncSearch',
+--             timeout = 120,
+--         })
+--     end,
+-- })
 
 
 -- set custom cursorline & number
