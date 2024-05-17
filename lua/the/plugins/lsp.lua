@@ -57,6 +57,12 @@ return {
           telemetry = { enable = false },
         },
       },
+      tsserver = {
+        diagnostics = { ignoredCodes = {
+          6133, 80001
+        } }
+      }
+
     }
 
     -- vim.diagnostic.config({

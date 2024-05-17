@@ -37,7 +37,7 @@ return {
         end,
       },
       completion = {
-        -- autoselect first item (so i dont have press the key three times to select the 2th item)
+        -- autoselect first item (so i dont have to press the key three times to select the 2th item)
         completeopt = 'menu,menuone,noinsert'
       },
       matching = {

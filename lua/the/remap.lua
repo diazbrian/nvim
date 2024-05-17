@@ -21,7 +21,7 @@ vim.keymap.set("n", "<leader>q", ":bd<CR>", { silent = true })
 vim.keymap.set("n", "<leader>w", ":w<CR>")
 
 -- select current word to replace
-vim.keymap.set("n", "<leader>s", [[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left>]])
+vim.keymap.set("n", "<leader>S", [[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left>]])
 
 -- indent in visual mode
 vim.keymap.set("v", "<Tab>", ">gv<Esc>")

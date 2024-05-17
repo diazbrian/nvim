@@ -44,29 +44,31 @@ return {
             --   gui = 'bold'
             -- }
           },
-          { 'progress' },
-          { 'location' }
+          -- { 'progress' },
+          -- { 'location' }
         },
         lualine_x = {
-          { 'diagnostics', },
+          { 'diagnostics', symbols = {error = 'E ', warn = 'W ', info = 'I ', hint = 'H '}, },
           { 'branch', icon = '', color = { fg = '#888888', gui = 'bold' } },
-          {
-            'diff',
-            diff_color = {
-              added = { fg = colors.green },
-              modified = { fg = colors.orange },
-              removed = { fg = colors.red },
-            },
-          },
-          { 'encoding', fmt = string.upper, color = { fg = colors.blue } },
-          { 'filesize', color = { fg = colors.magenta } },
+          -- {
+          --   'diff',
+          --   diff_color = {
+          --     added = { fg = colors.green },
+          --     modified = { fg = colors.orange },
+          --     removed = { fg = colors.red },
+          --   },
+          -- },
+          -- { 'encoding', fmt = string.upper, color = { fg = colors.blue } },
           {
             'fileformat',
             icons_enabled = false,
             fmt = string.upper,
-            color = { fg = colors.green },
+            color = { fg = colors.blue },
             cond = conditions.buffer_not_empty,
-          }
+          },
+          { 'filesize', color = { fg = colors.magenta } },
+          { 'location'--[[ , color = { fg = colors.magenta } ]] },
+          { 'progress'--[[ , color = { fg = colors.green } ]] },
         },
         lualine_y = {},
         lualine_z = {}

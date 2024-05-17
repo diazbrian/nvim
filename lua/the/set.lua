@@ -45,6 +45,22 @@ vim.opt.listchars = {
   precedes = '◀',
 }
 
+-- vim.opt.laststatus = 3
+
+-- local function statusline()
+--   local file_name = " %f "
+--   local read_only = "%r"
+--   local modyfied = "%m"
+--   local align = "%="
+--   local diagnostic = #vim.diagnostic.get(0, { severity = { min = vim.diagnostic.severity.WARN } })
+--   local linecol = "%3l,%c      "
+--   local percent = "%P "
+--
+--   return string.format("%s%s%s%s%s%s%s", file_name, read_only, modyfied, align, diagnostic, linecol, percent)
+-- end
+--
+-- vim.opt.statusline = statusline()
+
 vim.cmd('highlight CursorLineNr gui=bold guifg=#fff')
 vim.g.netrw_browse_split = 0
 vim.g.netrw_banner = 0

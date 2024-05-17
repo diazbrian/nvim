@@ -12,7 +12,8 @@ return {
         },
         diagnostics = "nvim_lsp",
         separator_style = "thin", -- "slant" | "slope" | "thick" | "thin" | { 'any', 'any' }
-        buffer_close_icon = '󰅖',
+        show_buffer_icons = false,
+        buffer_close_icon = 'x',
         indicator = {
           style = 'none',
         },
@@ -24,11 +25,6 @@ return {
             separator = true -- use a "true" to enable the default, or set your own character
           }
         },
-        hover = {
-          enabled = true,
-          delay = 0,
-          reveal = { 'close' }
-        }
       },
     }
   end
