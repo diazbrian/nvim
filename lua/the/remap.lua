@@ -4,14 +4,14 @@ vim.g.mapleader = " "
 -- vim.keymap.set({"n", "v"}, "<C-h>", "_")
 -- vim.keymap.set({"n", "v"}, "<C-l>", "$")
 
--- Some emacs keybiding in insert mode
-vim.keymap.set("i", "<C-b>", "<Left>")
-vim.keymap.set("i", "<C-f>", "<Right>")
-vim.keymap.set("i", "<C-a>", "<Home>")
+-- Some emacs keybiding in insert, command mode
+vim.keymap.set({"i", "c"}, "<C-b>", "<Left>")
+vim.keymap.set({"i", "c"}, "<C-f>", "<Right>")
+vim.keymap.set({"i", "c"}, "<C-a>", "<Home>")
 vim.keymap.set("i", "<C-e>", "<End>")
-vim.keymap.set("i", "<A-b>", "<C-Left>")
-vim.keymap.set("i", "<A-f>", "<C-Right>")
-vim.keymap.set("i", "<C-d>", "<Del>")
+vim.keymap.set({"i", "c"}, "<A-b>", "<C-Left>")
+vim.keymap.set({"i", "c"}, "<A-f>", "<C-Right>")
+vim.keymap.set({"i", "c"}, "<C-d>", "<Del>")
 vim.keymap.set("i", "<A-d>", "<Esc>ldwi")
 
 -- buffer next; prev; delete; save
@@ -24,12 +24,12 @@ vim.keymap.set("n", "<leader>w", ":w<CR>")
 vim.keymap.set("n", "<leader>S", [[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left>]])
 
 -- indent in visual mode
-vim.keymap.set("v", "<Tab>", ">gv<Esc>")
-vim.keymap.set("v", "<S-Tab>", "<gv<Esc>")
+vim.keymap.set("v", "<Tab>", ">gv")
+vim.keymap.set("v", "<S-Tab>", "<gv")
 
 -- S E X
-vim.keymap.set("v", "J", ":m '>+1<CR>gv=gv")
-vim.keymap.set("v", "K", ":m '<-2<CR>gv=gv")
+vim.keymap.set("v", "J", ":m '>+1<CR>gv=gv", { silent = true })
+vim.keymap.set("v", "K", ":m '<-2<CR>gv=gv", { silent = true })
 
 -- terminal
 vim.keymap.set("n", "<A-t>", ":sp<CR>:terminal pwsh<CR>i")
