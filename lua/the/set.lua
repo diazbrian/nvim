@@ -65,6 +65,8 @@ vim.cmd('highlight CursorLineNr gui=bold guifg=#fff')
 vim.g.netrw_browse_split = 0
 vim.g.netrw_banner = 0
 -- vim.g.netrw_winsize = 25
+vim.g.netrw_sort_by = "exten"
+vim.g.netrw_list_hide = "^./$"
 -- vim.g.netrw_cursor = 4
 
 -- highlight when yank something

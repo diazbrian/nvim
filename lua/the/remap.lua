@@ -4,6 +4,10 @@ vim.g.mapleader = " "
 -- vim.keymap.set({"n", "v"}, "<C-h>", "_")
 -- vim.keymap.set({"n", "v"}, "<C-l>", "$")
 
+-- jump wrapped lines
+vim.keymap.set('n', 'k', "v:count == 0 ? 'gk' : 'k'", { expr = true, silent = true })
+vim.keymap.set('n', 'j', "v:count == 0 ? 'gj' : 'j'", { expr = true, silent = true })
+
 -- Some emacs keybiding in insert, command mode
 vim.keymap.set({"i", "c"}, "<C-b>", "<Left>")
 vim.keymap.set({"i", "c"}, "<C-f>", "<Right>")
@@ -52,4 +56,3 @@ vim.keymap.set("n", "<leader>cpp", ":sp<CR>:resize -4<CR>:terminal cmd /C g++ % 
 vim.keymap.set("n", "<F10>", "<cmd>!g++ % -Wall && start a.exe<CR>")
 vim.keymap.set("n", "<leader>pv", vim.cmd.Ex)
 vim.keymap.set("n", "<leader>f", vim.lsp.buf.format)
-vim.keymap.set("n", "<leader>u", vim.cmd.UndotreeToggle)

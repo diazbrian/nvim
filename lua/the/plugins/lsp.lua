@@ -1,5 +1,4 @@
 return {
-  -- { 'VonHeikemen/lsp-zero.nvim',        branch = 'v1.x', },
   -- LSP Support
   'neovim/nvim-lspconfig',
   dependencies = {
@@ -40,6 +39,18 @@ return {
       nmap('K', vim.lsp.buf.hover, 'Hover Documentation')
       nmap('<leader>K', vim.lsp.buf.signature_help, 'Signature Documentation')
 
+      -- Quickfix
+      local opts = { noremap = true, silent = true }
+
+      local function quickfix()
+        vim.lsp.buf.code_action({
+          filter = function(a) return a.isPreferred end,
+          apply = true
+        })
+      end
+
+      vim.keymap.set('n', '<leader>lqf', quickfix, opts)
+
       -- Create a command `:Format` local to the LSP buffer
       vim.api.nvim_buf_create_user_command(bufnr, 'Format', function(_)
         vim.lsp.buf.format()
@@ -58,9 +69,9 @@ return {
         },
       },
       tsserver = {
-        diagnostics = { ignoredCodes = {
-          6133, 80001
-        } }
+        diagnostics = {
+          ignoredCodes = { 6133, 80001 }
+        }
       }
 
     }
@@ -86,6 +97,10 @@ return {
 
     mason_lspconfig.setup {
       ensure_installed = vim.tbl_keys(servers),
+      -- dont check for updates on open
+      ui = {
+        check_outdated_packages_on_open = false,
+      }
     }
 
     mason_lspconfig.setup_handlers {
