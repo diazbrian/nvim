@@ -9,6 +9,7 @@ return {
     vim.keymap.set('n', '<leader>sf', builtin.find_files, {})
     vim.keymap.set('n', '<leader>sd', builtin.diagnostics, {})
     vim.keymap.set('n', '<leader>so', builtin.oldfiles, {})
+    vim.keymap.set('n', '<leader>sh', builtin.help_tags, {})
     -- vim.keymap.set('n', '<leader>sr', '<cmd>Telescope lsp_references<CR>', { noremap = true, silent = true })
 
     vim.keymap.set('n', '<leader>ds', function()

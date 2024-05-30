@@ -70,10 +70,12 @@ return {
       },
       tsserver = {
         diagnostics = {
-          ignoredCodes = { 6133, 80001 }
+          ignoredCodes = {
+            6133, -- [param] declared but never read
+            80001, -- File is a CommonJS module
+          }
         }
       }
-
     }
 
     -- vim.diagnostic.config({
@@ -82,6 +84,7 @@ return {
     --   sign = true,
     -- })
 
+    -- local signs = { Error = "E", Warn = "W", Hint = "H", Info = "I" }
     local signs = { Error = "● ", Warn = "● ", Hint = "● ", Info = "● " }
     for type, icon in pairs(signs) do
       local hl = "DiagnosticSign" .. type
