@@ -5,6 +5,11 @@ return {
   config = function()
     local builtin = require('telescope.builtin')
     local themes = require('telescope.themes')
+    local path = '~/.config/nvim/'
+
+    if vim.loop.os_uname().sysname == "Windows_NT" then
+      path = '~/AppData/Local/nvim/'
+    end
 
     vim.keymap.set('n', '<leader>sf', builtin.find_files, {})
     vim.keymap.set('n', '<leader>sd', builtin.diagnostics, {})
@@ -42,7 +47,7 @@ return {
     vim.keymap.set('n', '<leader>sn', function()
       builtin.find_files(themes.get_dropdown {
         prompt_title = " nvim config ",
-        cwd = "~/AppData/Local/nvim/",
+        cwd = path,
         layout_config = {
           prompt_position = "top",
           width = 0.6,
