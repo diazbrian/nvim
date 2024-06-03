@@ -24,26 +24,26 @@ vim.opt.signcolumn = "yes"
 vim.opt.guicursor = "n-c-sm:blinkoff800-blinkon800,i-ci-ve:ver25,r-cr-o:hor30" -- n-v-c-sm:block,i-ci-ve:ver25,r-cr-o:hor20
 vim.opt.termguicolors = true
 
-vim.opt.foldmethod = "expr"
-vim.opt.foldexpr = "nvim_treesitter#foldexpr()"
-vim.opt.foldlevel = 99
-vim.opt.foldnestmax = 1
-vim.opt.foldcolumn = "1"
-vim.opt.foldtext = [['+-- ' . substitute(getline(v:foldstart),'\\t',repeat('\ ',&tabstop),'g').'...'.trim(getline(v:foldend)) . ' (' . (v:foldend - v:foldstart + 1) . ' lines)']]
-vim.opt.fillchars = {
-  fold = " ",
-  foldopen = "󰅀",
-  foldclose = "󰅂",
-  foldsep = " ",
-}
-
-vim.opt.list = true
-vim.opt.listchars = {
-  trail = '·',
-  tab = '│ ',
-  extends = '▶',
-  precedes = '◀',
-}
+-- vim.opt.foldmethod = "expr"
+-- vim.opt.foldexpr = "nvim_treesitter#foldexpr()"
+-- vim.opt.foldlevel = 99
+-- vim.opt.foldnestmax = 1
+-- vim.opt.foldcolumn = "1"
+-- vim.opt.foldtext = [['+-- ' . substitute(getline(v:foldstart),'\\t',repeat('\ ',&tabstop),'g').'...'.trim(getline(v:foldend)) . ' (' . (v:foldend - v:foldstart + 1) . ' lines)']]
+-- vim.opt.fillchars = {
+--   fold = " ",
+--   foldopen = "󰅀",
+--   foldclose = "󰅂",
+--   foldsep = " ",
+-- }
+--
+-- vim.opt.list = true
+-- vim.opt.listchars = {
+--   trail = '·',
+--   tab = '│ ',
+--   extends = '▶',
+--   precedes = '◀',
+-- }
 
 -- vim.opt.laststatus = 3
 
