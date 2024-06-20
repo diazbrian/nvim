@@ -85,19 +85,19 @@ return {
     })
 
     -- `:` cmdline setup.
-    cmp.setup.cmdline(':', {
-      mapping = cmp.mapping.preset.cmdline(),
-      sources = cmp.config.sources({
-        { name = 'path' }
-      }, {
-        {
-          name = 'cmdline', max_item_count = 16,
-          option = {
-            ignore_cmds = { 'Man', '!' }
-          }
-        }
-      })
-    })
+    -- cmp.setup.cmdline(':', {
+    --   mapping = cmp.mapping.preset.cmdline(),
+    --   sources = cmp.config.sources({
+    --     { name = 'path' }
+    --   }, {
+    --     {
+    --       name = 'cmdline', max_item_count = 16,
+    --       option = {
+    --         ignore_cmds = { 'Man', '!' }
+    --       }
+    --     }
+    --   })
+    -- })
 
     vim.keymap.set({ "i", "s" }, "<c-k>", function()
       if luasnip.expand_or_jumpable() then

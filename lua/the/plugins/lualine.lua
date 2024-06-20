@@ -1,5 +1,6 @@
 return {
   'nvim-lualine/lualine.nvim',
+  -- enabled = false,
   -- dependencies = 'nvim-tree/nvim-web-devicons',
   config = function()
     local colors = {
@@ -44,13 +45,13 @@ return {
           --   },
           -- },
           -- { 'encoding', fmt = string.upper, color = { fg = colors.blue } },
-          {
-            'fileformat',
-            symbols = { unix = 'LF', dos = 'CRLF' },
-            icons_enabled = true,
-            -- color = { fg = 'magenta' },
-            cond = conditions.buffer_not_empty,
-          },
+          -- {
+          --   'fileformat',
+          --   symbols = { unix = 'LF', dos = 'CRLF' },
+          --   icons_enabled = true,
+          --   -- color = { fg = 'magenta' },
+          --   cond = conditions.buffer_not_empty,
+          -- },
           { 'filesize', --[[ color = { fg = colors.magenta } ]] },
           { 'location'--[[ , color = { fg = colors.magenta } ]] },
           { 'progress'--[[ , color = { fg = colors.green } ]] },
