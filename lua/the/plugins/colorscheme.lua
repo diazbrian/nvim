@@ -27,6 +27,14 @@ return {
           Search = {fg = 'black', bg = '#c27fd7'},
           WinSeparator = {fg = '#666', bg = 'none'},
           Visual = {fg = 'white', bg = '#0078d7'},
+
+          -- transparent background
+          Normal = {bg = 'none'},
+          EndOfBuffer = { fg = '#5a5b5e', bg = 'none'},
+          CursorLine = {bg = '#37383d'},
+          SignColumn = {fg = 'none', bg = 'none'},
+          NvimTreeNormal = {fg = 'none', bg = 'none'},
+          NvimTreeEndOfBuffer = {fg = 'none', bg = 'none'},
         },
       }
       vim.cmd.colorscheme("onedark")
