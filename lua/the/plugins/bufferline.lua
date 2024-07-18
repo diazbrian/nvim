@@ -11,7 +11,7 @@ return {
           bufferline.style_preset.no_bold,
         },
         diagnostics = "nvim_lsp",
-        separator_style = "thin", -- "slant" | "slope" | "thick" | "thin" | { 'any', 'any' }
+        separator_style = { '', '' }, -- "slant" | "slope" | "thick" | "thin" | { 'any', 'any' }
         show_buffer_icons = false,
         buffer_close_icon = 'x',
         indicator = {
