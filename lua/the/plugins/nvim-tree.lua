@@ -3,6 +3,7 @@ return {
 	dependencies = {'nvim-tree/nvim-web-devicons' },
 	keys = {
 		{"<A-n>", "<cmd>NvimTreeToggle<CR>"},
+		{"<A-f>", "<cmd>NvimTreeFindFileToggle<CR>"},
 	},
 	config = function ()
 		local function my_on_attach(bufnr)

@@ -45,6 +45,10 @@ vim.keymap.set("n", "<S-Down>", ":resize +3<CR>", { silent = true })
 vim.keymap.set("n", "<S-Left>", ":vertical resize -3<CR>", { silent = true })
 vim.keymap.set("n", "<S-Right>", ":vertical resize +3<CR>", { silent = true })
 
+-- select diff
+vim.keymap.set("n", "<leader>dh", ":diffget //2<CR>")
+vim.keymap.set("n", "<leader>dl", ":diffget //3<CR>")
+
 -- idk
 vim.keymap.set("n", "<Tab>", "gt")
 vim.keymap.set("n", "J", "mzJ`z")
