@@ -7,7 +7,8 @@ return {
         style = 'warmer', -- Choose between 'dark', 'darker', 'cool', 'deep', 'warm', 'warmer' and 'light'
         colors = {
           bg0 = '#1f1f1f',
-          bg3 = "#3a303b", -- visual mode color
+          bg3 = "#3a2a3a", -- visual mode color
+          -- bg3 = "#493949", -- visual mode color
           light_grey = "#a7aab0",
           grey = "#646568",
           fg = "#cbcbcb"
@@ -21,10 +22,26 @@ return {
           TelescopeResultsBorder = { fg = 'grey' },
           TelescopePreviewBorder = { fg = 'grey' },
           TelescopePromptBorder = { fg = 'grey' },
+          CurSearch = {fg = 'black', bg = '#8fb573'},
+          IncSearch = {fg = 'black', bg = '#8fb573'},
+          Search = {fg = 'black', bg = '#c27fd7'},
+          WinSeparator = {fg = '#666', bg = 'none'},
+          Visual = {fg = 'white', bg = '#0078d7'},
+
+          -- transparent background
+          Normal = {bg = 'none'},
+          EndOfBuffer = { fg = '#5a5b5e', bg = 'none'},
+          CursorLine = {bg = '#37383d'},
+          SignColumn = {fg = 'none', bg = 'none'},
+          NvimTreeNormal = {fg = 'none', bg = 'none'},
+          NvimTreeEndOfBuffer = {fg = 'none', bg = 'none'},
         },
       }
       vim.cmd.colorscheme("onedark")
-      vim.cmd('highlight WinSeparator guibg=none guifg=#666')
+      -- vim.cmd('highlight WinSeparator guibg=none guifg=#666')
+      -- vim.cmd('highlight IncSearch guibg=pink guifg=black')
+      -- vim.cmd('highlight CurSearch guibg=pink guifg=black')
+      -- vim.cmd('highlight Search guibg=#c27fd7 guifg=black')
     end
   },
 

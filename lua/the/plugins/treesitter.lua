@@ -8,7 +8,7 @@ return {
       ensure_installed = { "lua", "cpp", "vimdoc" },
 
       -- Automatically install missing parsers when entering buffer
-      auto_install = false,
+      auto_install = true,
 
       highlight = { enable = true, },
       indent = { enable = true },

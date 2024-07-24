@@ -1,5 +1,4 @@
 return {
-  -- { 'VonHeikemen/lsp-zero.nvim',        branch = 'v1.x', },
   -- LSP Support
   'neovim/nvim-lspconfig',
   dependencies = {
@@ -40,6 +39,18 @@ return {
       nmap('K', vim.lsp.buf.hover, 'Hover Documentation')
       nmap('<leader>K', vim.lsp.buf.signature_help, 'Signature Documentation')
 
+      -- Quickfix
+      local opts = { noremap = true, silent = true }
+
+      local function quickfix()
+        vim.lsp.buf.code_action({
+          filter = function(a) return a.isPreferred end,
+          apply = true
+        })
+      end
+
+      vim.keymap.set('n', '<leader>lqf', quickfix, opts)
+
       -- Create a command `:Format` local to the LSP buffer
       vim.api.nvim_buf_create_user_command(bufnr, 'Format', function(_)
         vim.lsp.buf.format()
@@ -57,23 +68,28 @@ return {
           telemetry = { enable = false },
         },
       },
+      tsserver = {
+        diagnostics = {
+          ignoredCodes = {
+            6133,  -- [param] declared but never read
+            80001, -- File is a CommonJS module
+          }
+        }
+      }
     }
 
-    -- vim.diagnostic.config({
-    --   virtual_text = true,
-    --   underline = true,
-    --   sign = true,
-    -- })
-
+    -- local signs = { Error = "E", Warn = "W", Hint = "H", Info = "I" }
     local signs = { Error = "● ", Warn = "● ", Hint = "● ", Info = "● " }
     for type, icon in pairs(signs) do
       local hl = "DiagnosticSign" .. type
-      vim.fn.sign_define(hl, { text = icon, texthl = hl, numhl = "" })
+      vim.fn.sign_define(hl, { text = icon, texthl = hl, numhl = hl })
     end
 
     -- nvim-cmp supports additional completion capabilities, so broadcast that to servers
     local capabilities = vim.lsp.protocol.make_client_capabilities()
     capabilities = require('cmp_nvim_lsp').default_capabilities(capabilities)
+
+    local mason = require "mason"
 
     -- Ensure the servers above are installed
     local mason_lspconfig = require 'mason-lspconfig'
@@ -92,5 +108,12 @@ return {
         }
       end
     }
+
+    mason.setup({
+      -- dont check for updates on open
+      ui = {
+        check_outdated_packages_on_open = false,
+      }
+    })
   end
 }

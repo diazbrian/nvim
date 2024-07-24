@@ -1,6 +1,6 @@
 return {
   'hrsh7th/nvim-cmp',
-  event = "InsertEnter",
+  -- event = "VeryLazy",
   dependencies = {
     -- Adds LSP completion capabilities
     'hrsh7th/cmp-nvim-lsp',
@@ -8,6 +8,7 @@ return {
     -- for text in buffer and file system paths
     'hrsh7th/cmp-buffer',
     'hrsh7th/cmp-path',
+    "hrsh7th/cmp-cmdline",
 
     -- for neovim autocomplete
     'hrsh7th/cmp-nvim-lua',
@@ -23,7 +24,6 @@ return {
 
   },
   config = function()
-
     local cmp = require 'cmp'
     local luasnip = require 'luasnip'
     local lspkind = require("lspkind")
@@ -37,18 +37,18 @@ return {
         end,
       },
       completion = {
-        -- autoselect first item (so i dont have press the key three times to select the 2th item)
+        -- noinsert: autoselect first item (so i dont have to press the key twice to select the 2th item)
         completeopt = 'menu,menuone,noinsert'
       },
       matching = {
         disallow_fuzzy_matching = false,
       },
       mapping = cmp.mapping.preset.insert {
-        ['<C-n>'] = cmp.mapping.select_next_item {behavior = cmp.SelectBehavior.Select},
-        ['<C-p>'] = cmp.mapping.select_prev_item {behavior = cmp.SelectBehavior.Select},
+        ['<C-n>'] = cmp.mapping.select_next_item { behavior = cmp.SelectBehavior.Select },
+        ['<C-p>'] = cmp.mapping.select_prev_item { behavior = cmp.SelectBehavior.Select },
         ['<C-d>'] = cmp.mapping.scroll_docs(-4),
         ['<C-f>'] = cmp.mapping.scroll_docs(4),
-        ['<C-e>'] = cmp.mapping.abort(),
+        ['<C-x>'] = cmp.mapping.abort(),
         ['<C-s>'] = cmp.mapping.complete(),
         ['<C-l>'] = cmp.mapping.confirm {
           behavior = cmp.ConfirmBehavior.Replace,
@@ -75,5 +75,40 @@ return {
         }),
       },
     }
+
+    -- `/` cmdline setup.
+    cmp.setup.cmdline({ '/', '?' }, {
+      mapping = cmp.mapping.preset.cmdline(),
+      sources = {
+        { name = 'buffer', max_item_count = 16 }
+      }
+    })
+
+    -- `:` cmdline setup.
+    -- cmp.setup.cmdline(':', {
+    --   mapping = cmp.mapping.preset.cmdline(),
+    --   sources = cmp.config.sources({
+    --     { name = 'path' }
+    --   }, {
+    --     {
+    --       name = 'cmdline', max_item_count = 16,
+    --       option = {
+    --         ignore_cmds = { 'Man', '!' }
+    --       }
+    --     }
+    --   })
+    -- })
+
+    vim.keymap.set({ "i", "s" }, "<c-k>", function()
+      if luasnip.expand_or_jumpable() then
+        luasnip.expand_or_jump()
+      end
+    end, { silent = true })
+
+    vim.keymap.set({ "i", "s" }, "<c-j>", function()
+      if luasnip.jumpable(-1) then
+        luasnip.jump(-1)
+      end
+    end, { silent = true })
   end
 }

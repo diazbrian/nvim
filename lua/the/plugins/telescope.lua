@@ -5,10 +5,17 @@ return {
   config = function()
     local builtin = require('telescope.builtin')
     local themes = require('telescope.themes')
+    local config_path = '~/.config/nvim/'
 
-    vim.keymap.set('n', '<leader>F', builtin.find_files, {})
-    vim.keymap.set('n', '<leader>dd', '<cmd>Telescope diagnostics<CR>', { noremap = true, silent = true })
-    -- vim.keymap.set('n', '<leader>rr', '<cmd>Telescope lsp_references<CR>', { noremap = true, silent = true })
+    if vim.loop.os_uname().sysname == "Windows_NT" then
+      config_path = '~/AppData/Local/nvim/'
+    end
+
+    vim.keymap.set('n', '<leader>sf', builtin.find_files, {})
+    vim.keymap.set('n', '<leader>sd', builtin.diagnostics, {})
+    vim.keymap.set('n', '<leader>so', builtin.oldfiles, {})
+    vim.keymap.set('n', '<leader>sh', builtin.help_tags, {})
+    -- vim.keymap.set('n', '<leader>sr', '<cmd>Telescope lsp_references<CR>', { noremap = true, silent = true })
 
     vim.keymap.set('n', '<leader>ds', function()
       builtin.lsp_document_symbols({
@@ -22,7 +29,7 @@ return {
       builtin.grep_string({ search = vim.fn.input("Grep > ") });
     end)
 
-    vim.keymap.set('n', '<leader>g', function()
+    vim.keymap.set('n', '<leader>sg', function()
       builtin.live_grep({
         layout_strategy = 'vertical',
         layout_config = {
@@ -32,21 +39,39 @@ return {
     end)
 
     vim.keymap.set('n', '<leader><leader>', function()
-      builtin.current_buffer_fuzzy_find(themes.get_dropdown{
+      builtin.current_buffer_fuzzy_find(themes.get_dropdown {
         previewer = false,
       })
     end)
 
-    vim.keymap.set('n', '<leader>ed', function()
+    vim.keymap.set('n', '<leader>sn', function()
       builtin.find_files(themes.get_dropdown {
         prompt_title = " nvim config ",
-        cwd = "~/AppData/Local/nvim/",
+        title = " file name ",
+        cwd = config_path,
         layout_config = {
           prompt_position = "top",
           width = 0.6,
         },
       })
     end)
+
+    local function filenameFirst(_, path)
+      local tail = vim.fs.basename(path)
+      local parent = vim.fs.dirname(path)
+      if parent == "." then return tail end
+      return string.format("%s\t\t%s", tail, parent)
+    end
+
+    vim.api.nvim_create_autocmd("FileType", {
+      pattern = "TelescopeResults",
+      callback = function(ctx)
+        vim.api.nvim_buf_call(ctx.buf, function()
+          vim.fn.matchadd("TelescopeParent", "\t\t.*$")
+          vim.api.nvim_set_hl(0, "TelescopeParent", { link = "Comment" })
+        end)
+      end,
+    })
 
     require('telescope').setup {
       defaults = {
@@ -58,6 +83,11 @@ return {
           }
         }
       },
+      pickers = {
+        find_files = {
+          path_display = filenameFirst
+        }
+      }
     }
   end
 }

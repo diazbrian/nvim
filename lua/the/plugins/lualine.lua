@@ -1,5 +1,6 @@
 return {
   'nvim-lualine/lualine.nvim',
+  -- enabled = false,
   -- dependencies = 'nvim-tree/nvim-web-devicons',
   config = function()
     local colors = {
@@ -12,19 +13,13 @@ return {
       blue    = '#51afef',
       red     = '#ec5f67',
     }
+
     local conditions = {
       buffer_not_empty = function()
         return vim.fn.empty(vim.fn.expand('%:t')) ~= 1
       end,
-      hide_in_width = function()
-        return vim.fn.winwidth(0) > 80
-      end,
-      check_git_workspace = function()
-        local filepath = vim.fn.expand('%:p:h')
-        local gitdir = vim.fn.finddir('.git', filepath .. ';')
-        return gitdir and #gitdir > 0 and #gitdir < #filepath
-      end,
     }
+
     local config = {
       options = {
         theme = 'auto',
@@ -36,37 +31,30 @@ return {
         lualine_a = {},
         lualine_b = {},
         lualine_c = {
-          {
-            'filename',
-            path = 1,
-            -- color = {
-            --   -- fg = colors.fg,
-            --   gui = 'bold'
-            -- }
-          },
-          { 'progress' },
-          { 'location' }
+          { 'filename', path = 1 }
         },
         lualine_x = {
-          { 'diagnostics', },
+          { 'diagnostics', symbols = {error = 'E ', warn = 'W ', info = 'I ', hint = 'H '}, },
           { 'branch', icon = '', color = { fg = '#888888', gui = 'bold' } },
-          {
-            'diff',
-            diff_color = {
-              added = { fg = colors.green },
-              modified = { fg = colors.orange },
-              removed = { fg = colors.red },
-            },
-          },
-          { 'encoding', fmt = string.upper, color = { fg = colors.blue } },
-          { 'filesize', color = { fg = colors.magenta } },
-          {
-            'fileformat',
-            icons_enabled = false,
-            fmt = string.upper,
-            color = { fg = colors.green },
-            cond = conditions.buffer_not_empty,
-          }
+          -- {
+          --   'diff',
+          --   diff_color = {
+          --     added = { fg = colors.green },
+          --     modified = { fg = colors.orange },
+          --     removed = { fg = colors.red },
+          --   },
+          -- },
+          -- { 'encoding', fmt = string.upper, color = { fg = colors.blue } },
+          -- {
+          --   'fileformat',
+          --   symbols = { unix = 'LF', dos = 'CRLF' },
+          --   icons_enabled = true,
+          --   -- color = { fg = 'magenta' },
+          --   cond = conditions.buffer_not_empty,
+          -- },
+          { 'filesize', --[[ color = { fg = colors.magenta } ]] },
+          { 'location'--[[ , color = { fg = colors.magenta } ]] },
+          { 'progress'--[[ , color = { fg = colors.green } ]] },
         },
         lualine_y = {},
         lualine_z = {}
