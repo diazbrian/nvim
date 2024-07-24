@@ -38,6 +38,8 @@ vim.keymap.set("v", "K", ":m '<-2<CR>gv=gv", { silent = true })
 -- terminal
 vim.keymap.set("n", "<A-t>", ":sp<CR>:terminal pwsh<CR>i")
 vim.keymap.set("t", "<A-n>", [[<C-\><C-N>]]) -- normal mode in terminal
+vim.keymap.set("t", "<A-k>", [[<C-\><C-N><C-w>k]])
+vim.keymap.set("n", "<A-j>", [[<C-w>ja]])
 
 -- resize split screen
 vim.keymap.set("n", "<S-Up>", ":resize -3<CR>", { silent = true })
