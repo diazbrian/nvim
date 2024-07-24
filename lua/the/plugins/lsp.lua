@@ -71,39 +71,31 @@ return {
       tsserver = {
         diagnostics = {
           ignoredCodes = {
-            6133, -- [param] declared but never read
+            6133,  -- [param] declared but never read
             80001, -- File is a CommonJS module
           }
         }
       }
     }
 
-    -- vim.diagnostic.config({
-    --   virtual_text = true,
-    --   underline = true,
-    --   sign = true,
-    -- })
-
     -- local signs = { Error = "E", Warn = "W", Hint = "H", Info = "I" }
     local signs = { Error = "● ", Warn = "● ", Hint = "● ", Info = "● " }
     for type, icon in pairs(signs) do
       local hl = "DiagnosticSign" .. type
-      vim.fn.sign_define(hl, { text = icon, texthl = hl, numhl = "" })
+      vim.fn.sign_define(hl, { text = icon, texthl = hl, numhl = hl })
     end
 
     -- nvim-cmp supports additional completion capabilities, so broadcast that to servers
     local capabilities = vim.lsp.protocol.make_client_capabilities()
     capabilities = require('cmp_nvim_lsp').default_capabilities(capabilities)
 
+    local mason = require "mason"
+
     -- Ensure the servers above are installed
     local mason_lspconfig = require 'mason-lspconfig'
 
     mason_lspconfig.setup {
       ensure_installed = vim.tbl_keys(servers),
-      -- dont check for updates on open
-      ui = {
-        check_outdated_packages_on_open = false,
-      }
     }
 
     mason_lspconfig.setup_handlers {
@@ -116,5 +108,12 @@ return {
         }
       end
     }
+
+    mason.setup({
+      -- dont check for updates on open
+      ui = {
+        check_outdated_packages_on_open = false,
+      }
+    })
   end
 }
