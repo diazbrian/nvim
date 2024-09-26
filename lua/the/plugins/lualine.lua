@@ -22,7 +22,7 @@ return {
 
     local config = {
       options = {
-        theme = 'auto',
+        theme = 'onedark',
         component_separators = { left = '', right = '' },
         section_separators = { left = '', right = '' },
         globalstatus = true,
