@@ -1,5 +1,5 @@
 vim.opt.number = true
-vim.opt.relativenumber = true
+-- vim.opt.relativenumber = true
 vim.opt.scrolloff = 8
 vim.opt.ignorecase = true
 vim.opt.smartcase = true
@@ -52,11 +52,11 @@ vim.opt.termguicolors = true
 --   local read_only = "%r"
 --   local modyfied = "%m"
 --   local align = "%="
---   local diagnostic = #vim.diagnostic.get(0, { severity = { min = vim.diagnostic.severity.WARN } })
+--   -- local diagnostic = #vim.diagnostic.get(0, { severity = { min = vim.diagnostic.severity.WARN } })
 --   local linecol = "%3l,%c      "
 --   local percent = "%P "
 --
---   return string.format("%s%s%s%s%s%s%s", file_name, read_only, modyfied, align, diagnostic, linecol, percent)
+--   return string.format("%s%s%s%s%s%s%s", file_name, read_only, modyfied, align, linecol, percent)
 -- end
 --
 -- vim.opt.statusline = statusline()
