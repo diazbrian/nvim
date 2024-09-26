@@ -30,7 +30,16 @@ return {
     require('luasnip.loaders.from_vscode').lazy_load()
     luasnip.config.setup {}
 
+    local borderstyle = {
+      border = { "╭", "─", "╮", "│", "╯", "─", "╰", "│" },
+      winhighlight = "Normal:CmpPmenu,CursorLine:PmenuSel,Search:None",
+    }
+
     cmp.setup {
+      window = {
+        completion = borderstyle,
+        documentation = borderstyle
+      },
       snippet = {
         expand = function(args)
           luasnip.lsp_expand(args.body)
@@ -85,19 +94,19 @@ return {
     })
 
     -- `:` cmdline setup.
-    -- cmp.setup.cmdline(':', {
-    --   mapping = cmp.mapping.preset.cmdline(),
-    --   sources = cmp.config.sources({
-    --     { name = 'path' }
-    --   }, {
-    --     {
-    --       name = 'cmdline', max_item_count = 16,
-    --       option = {
-    --         ignore_cmds = { 'Man', '!' }
-    --       }
-    --     }
-    --   })
-    -- })
+    cmp.setup.cmdline(':', {
+      mapping = cmp.mapping.preset.cmdline(),
+      sources = cmp.config.sources({
+        { name = 'path' }
+      }, {
+        {
+          name = 'cmdline', max_item_count = 16,
+          option = {
+            ignore_cmds = { 'Man', '!' }
+          }
+        }
+      })
+    })
 
     vim.keymap.set({ "i", "s" }, "<c-k>", function()
       if luasnip.expand_or_jumpable() then

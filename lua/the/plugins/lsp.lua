@@ -39,6 +39,9 @@ return {
       nmap('K', vim.lsp.buf.hover, 'Hover Documentation')
       nmap('<leader>K', vim.lsp.buf.signature_help, 'Signature Documentation')
 
+      vim.lsp.handlers ["textDocument/hover"] = vim.lsp.with( vim.lsp.handlers.hover, { border = "single", })
+      vim.lsp.handlers ["textDocument/signatureHelp"] = vim.lsp.with( vim.lsp.handlers.hover, { border = "single", })
+
       -- Quickfix
       local opts = { noremap = true, silent = true }
 
@@ -84,6 +87,15 @@ return {
       local hl = "DiagnosticSign" .. type
       vim.fn.sign_define(hl, { text = icon, texthl = hl, numhl = hl })
     end
+
+    vim.diagnostic.config({
+      float = {
+        focusable = false,
+        border = "rounded",
+        source = "always",
+        header = "",
+      }
+    })
 
     -- nvim-cmp supports additional completion capabilities, so broadcast that to servers
     local capabilities = vim.lsp.protocol.make_client_capabilities()
